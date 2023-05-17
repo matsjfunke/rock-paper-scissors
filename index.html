@@ -4,44 +4,74 @@
     <title>Rock Paper Scissors</title>
     <style>
       body {
-        background-color: black;
+        background-color: rgb(20, 20, 20);
         color: white;
         font-family: Arial;
       }
       .title{
-        font-size: 30px;
+        font-size: 300%;
         font-weight: bold;
+      }
+      .move-icon {
+        height: 50px;
+      }
+      .move-button{
+        background-color: rgb(20, 20, 20);
+        box-shadow: 5px;
+        width: 28%;
+        height: 110px;
+        border-radius: 60px;
+        margin-right: 3%;
+        cursor: pointer;
+      }
+      .result {
+        font-size: 150%;
+      }
+      .score {
+        font-size: 150%;
+      }
+      .reset-button {
+        background-color: white;
+        border: solid white;
+        height: 30px;
+        width: 180px;
+        border-radius: 50px;
       }
     </style>
   </head>
   <body>
     <p class="title">Rock Paper Scissors</p>
     <button onclick="
-      playGame('rock');
-    ">Rock</button>
+      playGame('rock');"
+      class="move-button">
+      <img src="images/rock.png" class="move-icon">
+    </button>
 
     <button onclick="
-      playGame('paper');
-    ">Paper</button>
+      playGame('paper');"
+      class="move-button">
+      <img src="images/paper.png"   class="move-icon">
+    </button>
 
     <button onclick="
-      playGame('scissors');
-    ">Scissors</button>
+      playGame('scissors');"
+      class="move-button">
+      <img src="images/scissors.png"           class="move-icon">
+    </button>
 
-    <p class="js-result"></p>
+    <p class="js-result result"></p>
     <p class="js-moves"></p>
-    <p class="js-score"></p>
-
-    
+    <p class="js-score score"></p> 
 
     <button onclick="
       score.wins = 0;
       score.losses = 0;
       score.ties = 0;
       localStorage.removeItem('score');
-      updateScoreELement();
-    ">Reset Score
-    </button>
+      updateScoreELement();"
+      class="reset-button"
+    ><strong>Reset Score</strong></button>
+
     <script>
       const score = JSON.parse(localStorage.getItem('score')) || {
           wins: 0,
@@ -101,7 +131,7 @@
           .innerHTML = result;
 
 //display the played Moves
-        document.querySelector('.js-moves').innerHTML = `You ${playerMove} - ${computerMove} Computer`;
+        document.querySelector('.js-moves').innerHTML = `You <img src="images/${playerMove}.png" class="move-icon">  <img src="images/${computerMove}.png" class="move-icon"> Computer`;
       }
 
 //Update Score and show on screen
